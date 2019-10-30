@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: r-greet
+          uri: http://127.0.0.1:8081
+          predicates:
+            - Path=/greeting{segment}
+          filters:
+            - SetPath=/{segment}
+        - id: r-name
+          uri: http://127.0.0.1:8082
+          predicates:
+            - Path=/name
+          filters:
+            - RewritePath=/name(?<segment>.*), ${segment}
+        - id: r-web
+          uri: http://127.0.0.1:8080
+          predicates:
+            - Path=/web

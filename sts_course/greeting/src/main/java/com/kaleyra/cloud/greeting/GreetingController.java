@@ -14,6 +14,11 @@ public class GreetingController {
 	@Autowired
 	private GreetingProperties greetingProperties;
 	
+//	@RequestMapping("/*")
+//	public String catchAll() {
+//		return "OK";
+//	}
+	
 	@RequestMapping("/")
 	public String getGreeting() {
 		LOG.info("get greeting => " + greetingProperties.getGreeting());

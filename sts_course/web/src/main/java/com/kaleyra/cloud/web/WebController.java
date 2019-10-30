@@ -15,7 +15,7 @@ public class WebController {
 	@Autowired
 	private NameService nameService;
 	
-	@RequestMapping("/")
+	@RequestMapping("/web")
 	public String index() {
 		String _res = new StringBuilder()
 				.append(greetingService.getGreeting())
