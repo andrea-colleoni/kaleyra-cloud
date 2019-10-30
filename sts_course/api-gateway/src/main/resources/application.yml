@@ -7,6 +7,10 @@ spring:
           predicates:
             - Path=/greeting{segment}
           filters:
+            - name: Hystrix
+              args:
+               name: fallbackcmd
+               fallbackUri: forward:/fallback/basic
             - SetPath=/{segment}
         - id: r-name
           uri: http://127.0.0.1:8082
