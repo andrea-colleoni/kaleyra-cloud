@@ -18,6 +18,9 @@ public class WebApplication {
 		SpringApplication.run(WebApplication.class, args);
 	}
 	
+	// in quest'applicazione questo bean è superfluo perché
+	// uso i feign clients (non ho bisogno del restTemplate)
+	/*
 	@Configuration
 	static class AppConfig {
 		@Bean
@@ -25,5 +28,5 @@ public class WebApplication {
 			return new RestTemplateBuilder().build();
 		}
 	}
-
+	*/
 }

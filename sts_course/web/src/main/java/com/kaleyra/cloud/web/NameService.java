@@ -1,17 +1,11 @@
 package com.kaleyra.cloud.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Service
-public class NameService {
-
-	private static final String URL = "http://localhost:8082";
-	@Autowired
-	private RestTemplate rest;
+@FeignClient("name")
+public interface NameService {
 	
-	public String getName() {
-		return rest.getForObject(URL, String.class);
-	}
+	@RequestMapping("/")
+	String getName();
 }
