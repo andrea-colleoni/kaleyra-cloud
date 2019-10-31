@@ -30,7 +30,6 @@ spring:
           predicates:
             - Path=/web
           filters:
-            - TokenRelay=
             - name: Hystrix
               args:
                name: fallbackW
