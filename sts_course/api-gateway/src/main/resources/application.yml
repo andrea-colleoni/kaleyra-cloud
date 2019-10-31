@@ -9,7 +9,7 @@ spring:
           filters:
             - name: Hystrix
               args:
-               name: fallbackcmd
+               name: fallbackG
                fallbackUri: forward:/fallback/basic
             - SetPath=/{segment}
         - id: r-name
@@ -17,8 +17,17 @@ spring:
           predicates:
             - Path=/name
           filters:
+            - name: Hystrix
+              args:
+               name: fallbackN
+               fallbackUri: forward:/fallback/basic
             - RewritePath=/name(?<segment>.*), ${segment}
         - id: r-web
           uri: http://127.0.0.1:8080
           predicates:
             - Path=/web
+          filters:
+            - name: Hystrix
+              args:
+               name: fallbackW
+               fallbackUri: forward:/fallback/basic
