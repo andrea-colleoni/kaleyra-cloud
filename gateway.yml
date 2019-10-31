@@ -1,0 +1,33 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: r-greet
+          uri: http://127.0.0.1:8081
+          predicates:
+            - Path=/greeting{segment}
+          filters:
+            - name: Hystrix
+              args:
+               name: fallbackG
+               fallbackUri: forward:/fallback/basic
+            - SetPath=/{segment}
+        - id: r-name
+          uri: http://127.0.0.1:8082
+          predicates:
+            - Path=/name
+          filters:
+            - name: Hystrix
+              args:
+               name: fallbackN
+               fallbackUri: forward:/fallback/basic
+            - RewritePath=/name(?<segment>.*), ${segment}
+        - id: r-web
+          uri: http://127.0.0.1:8080
+          predicates:
+            - Path=/web
+          filters:
+            - name: Hystrix
+              args:
+               name: fallbackW
+               fallbackUri: forward:/fallback/basic
