@@ -26,7 +26,7 @@ spring:
                fallbackUri: forward:/fallback/basic
             - RewritePath=/name(?<segment>.*), ${segment}
         - id: r-web
-          uri: http://127.0.0.1:8080
+          uri: lb://web
           predicates:
             - Path=/web
           filters:
