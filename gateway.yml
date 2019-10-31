@@ -35,19 +35,3 @@ spring:
               args:
                name: fallbackW
                fallbackUri: forward:/fallback/basic
-spring:
-  autoconfigure:
-    # TODO: remove when fixed https://github.com/spring-projects/spring-security/issues/6314
-    exclude: org.springframework.boot.actuate.autoconfigure.security.reactive.ReactiveManagementWebSecurityAutoConfiguration
-security:
-  oauth2:
-    client:
-      clientId: 71dbf1f619dabbf099c8
-      clientSecret: 848bfc287e174f383f8fe857580ffed5e2c01156
-      accessTokenUri: https://github.com/login/oauth/access_token
-      userAuthorizationUri: https://github.com/login/oauth/authorize
-      clientAuthenticationScheme: form
-      scope: read:user
-    resource:
-      userInfoUri: https://api.github.com/user
-      preferTokenInfo: false
