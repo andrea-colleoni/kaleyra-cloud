@@ -10,4 +10,5 @@ public interface GreetingService {
 	
 	@RequestMapping("/")
 	String getGreeting();
+
 }
